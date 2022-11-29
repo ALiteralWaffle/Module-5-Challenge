@@ -4,13 +4,36 @@ $(document).ready(function () {
 var dt = new Date();
 document.getElementById("currentDay").innerHTML=dt;
 
+// Adds past, present, and future classes to text boxes based on current time
+function timeTracker() {
+  var currentHour = today.getHours();
+
+  $(".time-block").each(function() {
+    var colorTime = parseInt($(this).attr("id").split("hour")[1]);
+
+    if (colorTime < currentHour) {
+      $(this).removeClass("future");
+      $(this).removeClass("present");
+      $(this).addClass("past");
+    } else if (colorTime === currentHour) {
+      $(this).removeClass("future");
+      $(this).removeClass("past");
+      $(this).addClass("present");
+    } else {
+      $(this).removeClass("past");
+      $(this).removeClass("present");
+      $(this).addClass("future");
+    }
+  })
+}
+
 // Save button listener
 $(".saveBtn").on("click", function () {
   var text = $(this).siblings(".description").val();
   var time = $(this).parent().attr("id");
 
   localStorage.setItem(time, text);
-})
+});
 
 // Pulls values from text boxes if anything exists there
 $("#hour-9 .description").val(localStorage.getItem("hour-9"));
@@ -23,11 +46,6 @@ $("#hour-15 .description").val(localStorage.getItem("hour-15"));
 $("#hour-16 .description").val(localStorage.getItem("hour-16"));
 $("#hour-17 .description").val(localStorage.getItem("hour-17"));
 
+timeTracker();
+
 });
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
