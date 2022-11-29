@@ -18,6 +18,7 @@ N/A
 
 ## Application Info
 
-Link to application: 
+Link to application: https://aliteralwaffle.github.io/Module-5-Day-Planner/
 
 Image of application attached:
+![image](https://user-images.githubusercontent.com/43278458/204424989-0f54b7c9-755d-4646-b54c-3b9bc26073e2.png)
